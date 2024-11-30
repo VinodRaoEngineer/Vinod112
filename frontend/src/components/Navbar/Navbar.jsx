@@ -28,10 +28,10 @@ const Navbar = ({setShowLogin}) => {
     </ul>
     <div className="navbar-right">
       <img src={assets.search_icon} alt="" />
-      <Link to='/cart' className='navbar-search-icon'>
-        <img src={assets.basket_icon} alt="" />
+       <div className='navbar-search-icon'>
+      <Link to='/cart'> <img src={assets.basket_icon} alt="" /></Link>
         <div className={getTotalCartAmount() > 0 ? "dot" : ""}></div>
-      </Link>
+        </div> 
       {!token ? <button onClick={() => setShowLogin(true)}>sign in</button>
         : <div className='navbar-profile'>
           <img src={assets.profile_icon} alt="" />

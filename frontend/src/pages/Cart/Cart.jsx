@@ -5,8 +5,18 @@ import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { cartItems, food_list, removeFromCart,getTotalCartAmount ,url,currency,deliveryCharge} = useContext(StoreContext);
-
+  console.log(cartItems)
+  console.log(food_list)
   const navigate =useNavigate()
+
+  //  Ensure food_list and cartItems are loaded
+  //  if (!food_list.length || Object.keys(cartItems).length === 0) {
+  //   return <p>Cart is Empty...</p>;
+  // }
+
+
+  
+
   return (
     <div className="cart">
       <div className="cart-items">
@@ -21,18 +31,18 @@ const Cart = () => {
         <br />
         <hr />
         {food_list.map((item, index) => {
-          if (cartItems[item.food_id] > 0) {
+          if (cartItems[item._id] > 0) {
             return (
               <div key={index}>
                 <div className="cart-items-title cart-items-item">
-                  <img src={url + "/images/" + item.food_image} alt="" />
-                  <p>{item.food_name}</p>
-                  <p>{currency}{item.food_price}</p>
+                  <img src={url + "/images/" + item.image} alt="" />
+                  <p>{item.name}</p>
+                  <p>{currency}{item.price}</p>
 
-                  <p>{cartItems[item.food_id]}</p>
-                  <p>{currency}{item.food_price * cartItems[item.food_id]}</p>
+                  <p>{cartItems[item._id]}</p>
+                  <p>{currency}{item.price * cartItems[item._id]}</p>
                   <p
-                    onClick={() => removeFromCart(item.food_id)}
+                    onClick={() => removeFromCart(item._id)}
                     className="cart-items-remove-icon"
                   >
                     x
@@ -55,12 +65,12 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>{currency}{getTotalCartAmount()===0?0:deliveryCharge}</p>
+              <p>{currency}{ deliveryCharge}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>{currency}{getTotalCartAmount()===0?0:getTotalCartAmount()+ deliveryCharge }</b>
+              <b>{currency}{getTotalCartAmount() + deliveryCharge }</b>
             </div>
           </div>
           <button onClick={()=>navigate('/order')}>PROCEED TO CHECKOUT</button>

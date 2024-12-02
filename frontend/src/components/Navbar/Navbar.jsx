@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
+import profile_icon from '../../assets/profile_icon.png'
 import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/storeContext";
 
@@ -34,7 +35,7 @@ const Navbar = ({setShowLogin}) => {
         </div> 
       {!token ? <button onClick={() => setShowLogin(true)}>sign in</button>
         : <div className='navbar-profile'>
-          <img src={assets.profile_icon} alt="" />
+          <img src={profile_icon} alt="" />
           <ul className='navbar-profile-dropdown'>
             <li onClick={()=>navigate('/myorders')}> <img src={assets.bag_icon} alt="" /> <p>Orders</p></li>
             <hr />

@@ -1,15 +1,15 @@
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js"
 import Stripe from "stripe";
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-//config variables
+// //config variables
 const currency = "inr";
 const deliveryCharge = 50;
 const frontend_URL = 'http://localhost:5173';
 
-// Placing User Order for Frontend using stripe
-const placeOrder = async (req, res) => {
+// // Placing User Order for Frontend using stripe
+ const placeOrder = async (req, res) => {
 
     try {
         const newOrder = new orderModel({
@@ -27,7 +27,7 @@ const placeOrder = async (req, res) => {
                 product_data: {
                     name: item.name
                 },
-                unit_amount: item.price * 100 
+                unit_amount: item.price * 100 *80
             },
             quantity: item.quantity
         }))
@@ -38,7 +38,7 @@ const placeOrder = async (req, res) => {
                 product_data: {
                     name: "Delivery Charge"
                 },
-                unit_amount: deliveryCharge * 100
+                unit_amount: deliveryCharge * 100 * 80
             },
             quantity: 1
         })
@@ -58,7 +58,7 @@ const placeOrder = async (req, res) => {
     }
 }
 
-// Placing User Order for Frontend using stripe
+// // Placing User Order for Frontend using stripe
 const placeOrderCod = async (req, res) => {
 
     try {
@@ -91,7 +91,7 @@ const listOrders = async (req, res) => {
     }
 }
 
-// User Orders for Frontend
+// // User Orders for Frontend
 const userOrders = async (req, res) => {
     try {
         const orders = await orderModel.find({ userId: req.body.userId });
@@ -102,6 +102,7 @@ const userOrders = async (req, res) => {
     }
 }
 
+// api for updating order status
 const updateStatus = async (req, res) => {
     console.log(req.body);
     try {

@@ -54,6 +54,8 @@ import facebook_icon from './facebook_icon.png'
 import twitter_icon from './twitter_icon.png'
 import cross_icon from './cross_icon.png'
 import selector_icon from './selector_icon.png'
+import profile_icon from './profile_icon.png'
+import parcel_icon from './parcel_icon.png'
 
 export const assets = {
     logo,
@@ -70,7 +72,9 @@ export const assets = {
     facebook_icon,
     twitter_icon,
     cross_icon,
-    selector_icon
+    selector_icon,
+    profile_icon,
+    parcel_icon
 }
 
 export const menu_list = [

@@ -1,6 +1,6 @@
-import userModel from "../models/userModel.js"
+ import userModel from "../models/userModel.js"
 
-// add to user cart  
+// // add to user cart  
 const addToCart = async (req, res) => {
    try {
       let userData = await userModel.findOne({_id:req.body.userId});
@@ -36,7 +36,7 @@ const removeFromCart = async (req, res) => {
 
 }
 
-// get user cart
+// // get user cart
 const getCart = async (req, res) => {
    try {
       let userData = await userModel.findById(req.body.userId);
@@ -49,4 +49,4 @@ const getCart = async (req, res) => {
 }
 
 
-export { addToCart, removeFromCart, getCart }
+ export { addToCart, removeFromCart, getCart }

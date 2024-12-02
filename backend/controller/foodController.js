@@ -1,4 +1,4 @@
-import foodModel from "../models/foodModel.js";
+import foodModel from '../models/foodModels.js'
 import fs from 'fs'
 
 // all food list
@@ -52,4 +52,4 @@ const removeFood = async (req, res) => {
 
 }
 
-export { listFood, addFood, removeFood }
+export { addFood,listFood,removeFood }
